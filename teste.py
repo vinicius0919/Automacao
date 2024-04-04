@@ -1,5 +1,8 @@
-import time
+listaOCI = [{"numero":"4444", "email":"email@email"},
+            {"numero":"4444", "email":"email@email"},
+            {"numero":"4444", "email":"email@email"}]
 
-print("enviando", time.time())
-time.sleep(25/1000)
-print("recebendo", time.time())
+listaOCI.append({"numero":"5555", "email":"email@email"})
+
+for elements in listaOCI:
+    print(elements["numero"])
