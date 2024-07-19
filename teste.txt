@@ -1,0 +1,11 @@
+quantidade': '38,966' 1 
+quantidade': '34,214' 
+quantidade': '16,988' 
+quantidade': '39,659' 
+quantidade': '14,137' 
+quantidade': '13,801' 
+quantidade': '13,583' 
+quantidade': '36,115' 
+quantidade': '8,653' 
+quantidade': '13,682' 
+quantidade': '39,461'

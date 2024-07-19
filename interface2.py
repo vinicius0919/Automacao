@@ -42,7 +42,6 @@ def inserirOCI(entradas):
         "objetoCusto": valores[11]
     }
     listaOCI.append(oci)
-    print(listaOCI)
     # Atualizar a exibição na aba 1
     texto_lista.configure(state='normal')
     texto_lista.delete('1.0', tk.END)
@@ -65,19 +64,15 @@ def obter_dados(entradas):
     valores = []
     for entry in entradas:
         valor = entry.get()
-        print(valor)
         valores.append(valor)
-    print("Valores digitados:")
-    for valor in valores:
-        print(valores)
 
 # Aba 1
 aba1 = ttk.Frame(notebook)
 notebook.add(aba1, text='LISTAR OCI')
 
+# Campos de entrada com alinhamento vertical na aba 1
 campos_entrada_aba1 = [
     ("Data da Nota:", ""),
-    ("Código do Funcionário:", ""),
     ("Código do Fornecedor:", ""),
     ("Plano de Pagamento:", ""),
     ("Pagamento de Frete:", ""),
@@ -90,6 +85,14 @@ campos_entrada_aba1 = [
     ("Almoxarifado: ", ""),
     ("Objeto de Custo: ", "")
 ]
+
+def limparListaOCI():
+    listaOCI.clear()
+    # Atualizar a exibição na aba 1
+    texto_lista.configure(state='normal')
+    texto_lista.delete('1.0', tk.END)
+    texto_lista.insert(tk.END, 'Lista OCI Limpa')
+    texto_lista.configure(state='disabled')
 
 def executarOCI():
     for oci in listaOCI:
@@ -108,7 +111,6 @@ def executarOCI():
             oci["objetoCusto"]
         )
 
-
 entradas_aba1 = criar_campos_verticais(aba1, campos_entrada_aba1)
 
 # Botão para adicionar OCI na aba 1
@@ -118,9 +120,13 @@ btn_adicionar_oci_aba1.grid(row=len(campos_entrada_aba1), columnspan=2, pady=(es
 btn_executar_oci_aba1 = tk.Button(aba1, text="Executar OCI", font=fonte, command=executarOCI)
 btn_executar_oci_aba1.grid(row=len(campos_entrada_aba1) + 1, columnspan=2, pady=(espacamento, 0))
 
+# Botão para limpar a lista OCI na aba 1
+btn_limpar_lista_oci_aba1 = tk.Button(aba1, text="Limpar Lista OCI", font=fonte, command=limparListaOCI)
+btn_limpar_lista_oci_aba1.grid(row=len(campos_entrada_aba1) + 2, columnspan=2, pady=(espacamento, 0))
+
 # Widget de texto para exibir listaOCI na aba 1
 texto_lista = tk.Text(aba1, font=fonte, width=40, height=10, state='disabled')
-texto_lista.grid(row=len(campos_entrada_aba1) + 2, columnspan=2, pady=(espacamento, 0))
+texto_lista.grid(row=len(campos_entrada_aba1) + 3, columnspan=2, pady=(espacamento, 0))
 
 # Aba 2
 aba2 = ttk.Frame(notebook)
@@ -183,13 +189,11 @@ def adicionarItem():
         "objetoCusto": entradas_aba4[11].get()
     }
     listaOCI.append(oci)
-    print(listaOCI)
 
 # Função para remover o item selecionado da listaOCI
 def removerItem():
     index_selecionado = lista_oci_lista.curselection()[0]
     listaOCI.pop(index_selecionado)
-    print(listaOCI)
 
 # Campo de entrada e rótulo para cada atributo de OCI
 campos_entrada_aba4 = [
